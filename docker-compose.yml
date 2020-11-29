@@ -1,0 +1,13 @@
+version: '3'
+services:
+  front_end:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
+    # 初回の作成時に以下コマンドをrootディレクトリで実行する
+    # docker-compose run --rm front_end sh -c "npm install -g create-react-app && create-react-app workplace"
+    command: sh -c "cd workplace && yarn start"
+    tty: true
