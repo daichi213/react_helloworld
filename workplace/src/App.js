@@ -1,31 +1,32 @@
 // JSXを使用するためのメソッド
 // import React, { Component } from 'react';
 import React from 'react';
-// class component
-// class App extends React.Component {
-//   render(){
-//     const greeting = "Hi, Tom!";
-//     const dom = <h1 chassName="foo">{greeting}</h1>;
-//     // returnにはひとつの要素のみしか出力できない
-//     return dom;
-//   }
-// }
-
 // functional component
 const App = () => {
+  const profiles = [
+    {name: "Taro", age: 10},
+    {name: "Hanako", age: 5},
+    {name: "NoName"}
+  ]
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+    {
+      profiles.map((profile, index) => {
+        return <User name={profile.name} age={profile.age} key={index} />
+      })
+    }
     </div>
   )
 }
 
-const Cat = () => {
-  return <div>Meow!!</div>
+// 中括弧部分をpropsという
+const User = (props) => {
+return <div>Hi, i am {props.name}, and {props.age} old !</div>
+}
+
+// propsの属性がない場合にここで指定した値を出力できる
+User.defaultProps = {
+  age:1
 }
 
 export default App;
