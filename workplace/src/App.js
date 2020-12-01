@@ -12,6 +12,7 @@ const App = () => {
     <div>
     {
       profiles.map((profile, index) => {
+        // keyは仮想DOM（ページ遷移時の変更箇所のDOMのみを読み込む仕組み）の関係上uniqueなkeyの値を指定する必要がある
         return <User name={profile.name} age={profile.age} key={index} />
       })
     }
