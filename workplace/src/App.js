@@ -1,12 +1,13 @@
 // JSXを使用するためのメソッド
 // import React, { Component } from 'react';
 import React from 'react';
+import PropTypes from 'prop-types';
 // functional component
 const App = () => {
   const profiles = [
     {name: "Taro", age: 10},
     {name: "Hanako", age: 5},
-    {name: "NoName"}
+    {name: "NoName", age: 3}
   ]
   return (
     <div>
@@ -25,9 +26,10 @@ const User = (props) => {
 return <div>Hi, i am {props.name}, and {props.age} old !</div>
 }
 
-// propsの属性がない場合にここで指定した値を出力できる
-User.defaultProps = {
-  age:1
+// 型チェック機構
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 export default App;
