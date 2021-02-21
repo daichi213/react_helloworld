@@ -1,35 +1,39 @@
 // JSXを使用するためのメソッド
-// import React, { Component } from 'react';
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 // functional component
 const App = () => {
-  const profiles = [
-    {name: "Taro", age: 10},
-    {name: "Hanako", age: 5},
-    {name: "NoName", age: 3}
-  ]
   return (
-    <div>
-    {
-      profiles.map((profile, index) => {
-        // keyは仮想DOM（ページ遷移時の変更箇所のDOMのみを読み込む仕組み）の関係上uniqueなkeyの値を指定する必要がある
-        return <User name={profile.name} age={profile.age} key={index} />
-      })
-    }
-    </div>
+    <Counter></Counter>
   )
 }
 
 // 中括弧部分をpropsという
-const User = (props) => {
-return <div>Hi, i am {props.name}, and {props.age} old !</div>
-}
+class Counter extends Component {
+  constructor(props) {
+    super(props)
+    console.log(this.state)
+    this.state = {count: 0}
+  }
 
-// 型チェック機構
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
+  handlePlusButton = () => {
+    console.log("hundlePlusButton")
+    console.log(this.state.count)
+    const count = this.state.count
+    this.setState({count: count + 1})
+  }
+
+  render(){
+    console.log(this.state)
+    return (
+      // JSX内で使用するスーパークラスは1つでなければ例外が返される。
+      // そのため、以下のようにFragmentで囲むことでこの例外は回避できる
+      <React.Fragment>
+        <div>counter: {this.state.count}</div>
+        <button onClick={this.handlePlusButton}>+1</button>
+        <button>-1</button>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;
