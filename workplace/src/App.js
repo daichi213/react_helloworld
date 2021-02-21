@@ -16,20 +16,24 @@ class Counter extends Component {
   }
 
   handlePlusButton = () => {
-    // 以下のように直接stateを更新することはできず、必ずsetStateを使用する必要がある
-    // this.state = {count: 0}
+    // setStateが実行されるとrenderが毎度実行される。
     this.setState({count: this.state.count + 1})
   }
 
+  handleMinusButton = () => {
+    this.setState({count: this.state.count - 1})
+  }
+
   render(){
-    console.log(this.state)
+    // setState実行時に同時に出力される
+    console.log("render")
     return (
       // JSX内で使用するスーパークラスは1つでなければ例外が返される。
       // そのため、以下のようにFragmentで囲むことでこの例外は回避できる
       <React.Fragment>
         <div>counter: {this.state.count}</div>
         <button onClick={this.handlePlusButton}>+1</button>
-        <button>-1</button>
+        <button onClick={this.handleMinusButton}>-1</button>
       </React.Fragment>
     )
   }
