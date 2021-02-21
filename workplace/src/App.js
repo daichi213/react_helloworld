@@ -16,6 +16,8 @@ class Counter extends Component {
   }
 
   handlePlusButton = () => {
+    // 以下のように直接stateを更新することはできず、必ずsetStateを使用する必要がある
+    // this.state = {count: 0}
     this.setState({count: this.state.count + 1})
   }
 
