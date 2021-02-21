@@ -1,11 +1,12 @@
-const increment = () => {
-    return {
-        type: "INCREMENT"
-    }
-}
+// 別ファイルでも使用するため外部へエクスポート
 
-const increment = () => {
-    return {
-        type: "DECREMENT"
-    }
-}
+export const INCREMENT = 'INCREMENT'
+export const DECREMENT = 'DECREMENT'
+
+export const increment = () => ({
+    type: "INCREMENT"
+})
+
+export const increment = () => ({
+    type: "DECREMENT"
+})
