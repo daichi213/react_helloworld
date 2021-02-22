@@ -25,7 +25,7 @@ class Counter extends Component {
   }
 
   render(){
-    // setState実行時に同時に出力される
+    // setState実行時に同時に実行される
     console.log("render")
     return (
       // JSX内で使用するスーパークラスは1つでなければ例外が返される。
