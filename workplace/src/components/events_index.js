@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { increment, decrement } from '../actions'
 
 // 中括弧部分をpropsという
-class App extends Component {
+class EventsIndex extends Component {
   render(){
     const props = this.props
     return (
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
 // 略式記述
 // const mapDispatchToProps = ({ increment, decrement})
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex)
